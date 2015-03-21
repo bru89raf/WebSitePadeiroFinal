@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.mcm.ipg.pt/" targetNamespace="http://services.mcm.ipg.pt/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="LoginException" type="tns:LoginException" />
+  <xs:element name="addProduto" type="tns:addProduto" />
+  <xs:element name="addProdutoResponse" type="tns:addProdutoResponse" />
+  <xs:element name="getProduto" type="tns:getProduto" />
+  <xs:element name="getProdutoResponse" type="tns:getProdutoResponse" />
+  <xs:element name="getProdutosCategorias" type="tns:getProdutosCategorias" />
+  <xs:element name="getProdutosCategoriasResponse" type="tns:getProdutosCategoriasResponse" />
+  <xs:element name="getProdutosDeSync" type="tns:getProdutosDeSync" />
+  <xs:element name="getProdutosDeSyncResponse" type="tns:getProdutosDeSyncResponse" />
+  <xs:complexType name="addProduto">
+    <xs:sequence>
+      <xs:element name="req-add-produto" type="tns:Req-add-produto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Req-add-produto">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string" />
+      <xs:element name="preco-unitario" type="xs:decimal" />
+      <xs:element name="categoria" type="xs:long" />
+      <xs:element name="foto" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addProdutoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Res-add-produto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-add-produto">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retorno">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:int" />
+      <xs:element name="mensagem" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LoginException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProdutosCategorias">
+    <xs:sequence>
+      <xs:element name="req-get-produtos-categorias" type="tns:Req-produtos-categorias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Req-produtos-categorias">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id-categoria" type="xs:long" />
+      <xs:element default="true" name="comFoto" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProdutosCategoriasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Res-get-produtos-categorias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-get-produtos-categorias">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="produto-categoria" type="tns:Produto-categoria" />
+      <xs:element minOccurs="0" name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Produto-categoria">
+    <xs:sequence>
+      <xs:element name="id-produto" type="xs:long" />
+      <xs:element name="nome-produto" type="xs:string" />
+      <xs:element name="nome-categoria" type="xs:string" />
+      <xs:element name="preco-actual" type="xs:decimal" />
+      <xs:element name="descricao" type="xs:string" />
+      <xs:element name="foto" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProdutosDeSync">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="versao" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProdutosDeSyncResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resGetProdutos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resGetProdutos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="retorno" type="tns:retorno" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="resGetProdutos" nillable="true" type="tns:Res-get-produto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-get-produto">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string" />
+      <xs:element name="preco-unitario" type="xs:decimal" />
+      <xs:element name="categoria" type="xs:long" />
+      <xs:element minOccurs="0" name="foto" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProduto">
+    <xs:sequence>
+      <xs:element name="reqgetproduto" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProdutoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Res-get-produto" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

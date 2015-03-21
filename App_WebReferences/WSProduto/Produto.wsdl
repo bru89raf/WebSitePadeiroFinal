@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://services.mcm.ipg.pt/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="Produto" targetNamespace="http://services.mcm.ipg.pt/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://rafaxps:8080/services/Produto?xsd=1" namespace="http://services.mcm.ipg.pt/" />
+    </xsd:schema>
+  </types>
+  <message name="getProduto">
+    <part name="parameters" element="tns:getProduto" />
+  </message>
+  <message name="getProdutoResponse">
+    <part name="parameters" element="tns:getProdutoResponse" />
+  </message>
+  <message name="addProduto">
+    <part name="parameters" element="tns:addProduto" />
+  </message>
+  <message name="addProdutoResponse">
+    <part name="parameters" element="tns:addProdutoResponse" />
+  </message>
+  <message name="LoginException">
+    <part name="fault" element="tns:LoginException" />
+  </message>
+  <message name="getProdutosCategorias">
+    <part name="parameters" element="tns:getProdutosCategorias" />
+  </message>
+  <message name="getProdutosCategoriasResponse">
+    <part name="parameters" element="tns:getProdutosCategoriasResponse" />
+  </message>
+  <message name="getProdutosDeSync">
+    <part name="parameters" element="tns:getProdutosDeSync" />
+  </message>
+  <message name="getProdutosDeSyncResponse">
+    <part name="parameters" element="tns:getProdutosDeSyncResponse" />
+  </message>
+  <portType name="ProdutoService">
+    <operation name="getProduto">
+      <input wsam:Action="http://services.mcm.ipg.pt/ProdutoService/getProdutoRequest" message="tns:getProduto" />
+      <output wsam:Action="http://services.mcm.ipg.pt/ProdutoService/getProdutoResponse" message="tns:getProdutoResponse" />
+    </operation>
+    <operation name="addProduto">
+      <input wsam:Action="http://services.mcm.ipg.pt/ProdutoService/addProdutoRequest" message="tns:addProduto" />
+      <output wsam:Action="http://services.mcm.ipg.pt/ProdutoService/addProdutoResponse" message="tns:addProdutoResponse" />
+      <fault wsam:Action="http://services.mcm.ipg.pt/ProdutoService/addProduto/Fault/LoginException" name="LoginException" message="tns:LoginException" />
+    </operation>
+    <operation name="getProdutosCategorias">
+      <input wsam:Action="http://services.mcm.ipg.pt/ProdutoService/getProdutosCategoriasRequest" message="tns:getProdutosCategorias" />
+      <output wsam:Action="http://services.mcm.ipg.pt/ProdutoService/getProdutosCategoriasResponse" message="tns:getProdutosCategoriasResponse" />
+    </operation>
+    <operation name="getProdutosDeSync">
+      <input wsam:Action="http://services.mcm.ipg.pt/ProdutoService/getProdutosDeSyncRequest" message="tns:getProdutosDeSync" />
+      <output wsam:Action="http://services.mcm.ipg.pt/ProdutoService/getProdutosDeSyncResponse" message="tns:getProdutosDeSyncResponse" />
+    </operation>
+  </portType>
+  <binding name="ProdutoPortBinding" type="tns:ProdutoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getProduto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addProduto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LoginException">
+        <soap:fault use="literal" name="LoginException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getProdutosCategorias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getProdutosDeSync">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Produto">
+    <port name="ProdutoPort" binding="tns:ProdutoPortBinding">
+      <soap:address location="http://rafaxps:8080/services/Produto" />
+    </port>
+  </service>
+</definitions>

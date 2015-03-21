@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.mcm.ipg.pt/" targetNamespace="http://services.mcm.ipg.pt/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="add-categoria" type="tns:add-categoria" />
+  <xs:element name="add-categoriaResponse" type="tns:add-categoriaResponse" />
+  <xs:element name="get-all-categorias" type="tns:get-all-categorias" />
+  <xs:element name="get-all-categorias-response" type="tns:get-all-categorias-response" />
+  <xs:element name="getCategoria" type="tns:getCategoria" />
+  <xs:element name="getCategoriaResponse" type="tns:getCategoriaResponse" />
+  <xs:element name="getCategoriasDeSync" type="tns:getCategoriasDeSync" />
+  <xs:element name="getCategoriasDeSyncResponse" type="tns:getCategoriasDeSyncResponse" />
+  <xs:element name="updateCategoria" type="tns:updateCategoria" />
+  <xs:element name="updateCategoriaResponse" type="tns:updateCategoriaResponse" />
+  <xs:complexType name="get-all-categorias">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="get-all-categorias-response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:Res-get-all-categorias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-get-all-categorias">
+    <xs:sequence>
+      <xs:element name="categorias">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="categoria" type="tns:Categoria" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Categoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="descricao" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retorno">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:int" />
+      <xs:element name="mensagem" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateCategoria">
+    <xs:sequence>
+      <xs:element name="request" type="tns:Req-update-categoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Req-update-categoria">
+    <xs:sequence>
+      <xs:element name="idCategoria" type="xs:int" />
+      <xs:element name="nome" type="xs:string" />
+      <xs:element name="descricao" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateCategoriaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Res-update-categoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-update-categoria">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" />
+      <xs:element name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="add-categoria">
+    <xs:sequence>
+      <xs:element name="request" type="tns:Req-add-categoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Req-add-categoria">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string" />
+      <xs:element name="descricao" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="add-categoriaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:Res-add-categoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-add-categoria">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" />
+      <xs:element name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCategoria">
+    <xs:sequence>
+      <xs:element name="req-get-categoria" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCategoriaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Res-get-categoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-get-categoria">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string" />
+      <xs:element name="descricao" type="xs:string" />
+      <xs:element minOccurs="0" name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCategoriasDeSync">
+    <xs:sequence>
+      <xs:element name="versao" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCategoriasDeSyncResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resCategoriasDesync" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resCategoriasDesync">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="categorias">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="categoria" type="tns:Categoria" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

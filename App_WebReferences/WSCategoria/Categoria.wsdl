@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://services.mcm.ipg.pt/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="Categoria" targetNamespace="http://services.mcm.ipg.pt/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://rafaxps:8080/services/Categoria?xsd=1" namespace="http://services.mcm.ipg.pt/" />
+    </xsd:schema>
+  </types>
+  <message name="updateCategoria">
+    <part name="parameters" element="tns:updateCategoria" />
+  </message>
+  <message name="updateCategoriaResponse">
+    <part name="parameters" element="tns:updateCategoriaResponse" />
+  </message>
+  <message name="add-categoria">
+    <part name="parameters" element="tns:add-categoria" />
+  </message>
+  <message name="add-categoriaResponse">
+    <part name="parameters" element="tns:add-categoriaResponse" />
+  </message>
+  <message name="getCategoria">
+    <part name="parameters" element="tns:getCategoria" />
+  </message>
+  <message name="getCategoriaResponse">
+    <part name="parameters" element="tns:getCategoriaResponse" />
+  </message>
+  <message name="get-all-categorias">
+    <part name="parameters" element="tns:get-all-categorias" />
+  </message>
+  <message name="get-all-categoriasResponse">
+    <part name="parameters" element="tns:get-all-categorias-response" />
+  </message>
+  <message name="getCategoriasDeSync">
+    <part name="parameters" element="tns:getCategoriasDeSync" />
+  </message>
+  <message name="getCategoriasDeSyncResponse">
+    <part name="parameters" element="tns:getCategoriasDeSyncResponse" />
+  </message>
+  <portType name="CategoriaService">
+    <operation name="updateCategoria">
+      <input wsam:Action="http://services.mcm.ipg.pt/CategoriaService/updateCategoriaRequest" message="tns:updateCategoria" />
+      <output wsam:Action="http://services.mcm.ipg.pt/CategoriaService/updateCategoriaResponse" message="tns:updateCategoriaResponse" />
+    </operation>
+    <operation name="add-categoria">
+      <input wsam:Action="http://services.mcm.ipg.pt/CategoriaService/add-categoriaRequest" message="tns:add-categoria" />
+      <output wsam:Action="http://services.mcm.ipg.pt/CategoriaService/add-categoriaResponse" message="tns:add-categoriaResponse" />
+    </operation>
+    <operation name="getCategoria">
+      <input wsam:Action="http://services.mcm.ipg.pt/CategoriaService/getCategoriaRequest" message="tns:getCategoria" />
+      <output wsam:Action="http://services.mcm.ipg.pt/CategoriaService/getCategoriaResponse" message="tns:getCategoriaResponse" />
+    </operation>
+    <operation name="get-all-categorias">
+      <input wsam:Action="http://services.mcm.ipg.pt/CategoriaService/get-all-categoriasRequest" message="tns:get-all-categorias" />
+      <output wsam:Action="http://services.mcm.ipg.pt/CategoriaService/get-all-categoriasResponse" message="tns:get-all-categoriasResponse" />
+    </operation>
+    <operation name="getCategoriasDeSync">
+      <input wsam:Action="http://services.mcm.ipg.pt/CategoriaService/getCategoriasDeSyncRequest" message="tns:getCategoriasDeSync" />
+      <output wsam:Action="http://services.mcm.ipg.pt/CategoriaService/getCategoriasDeSyncResponse" message="tns:getCategoriasDeSyncResponse" />
+    </operation>
+  </portType>
+  <binding name="CategoriaPortBinding" type="tns:CategoriaService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="updateCategoria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="add-categoria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCategoria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get-all-categorias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCategoriasDeSync">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Categoria">
+    <port name="CategoriaPort" binding="tns:CategoriaPortBinding">
+      <soap:address location="http://rafaxps:8080/services/Categoria" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.mcm.ipg.pt/" targetNamespace="http://services.mcm.ipg.pt/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="login" type="tns:login" />
+  <xs:element name="loginResponse" type="tns:loginResponse" />
+  <xs:complexType name="login">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="loginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Res-login" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Res-login">
+    <xs:sequence>
+      <xs:element name="retorno" type="tns:retorno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retorno">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:int" />
+      <xs:element name="mensagem" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

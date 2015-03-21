@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://services.mcm.ipg.pt/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="Authentication" targetNamespace="http://services.mcm.ipg.pt/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://rafaxps:8080/services/Authentication?xsd=1" namespace="http://services.mcm.ipg.pt/" />
+    </xsd:schema>
+  </types>
+  <message name="login">
+    <part name="parameters" element="tns:login" />
+  </message>
+  <message name="loginResponse">
+    <part name="parameters" element="tns:loginResponse" />
+  </message>
+  <portType name="AuthenticationService">
+    <operation name="login">
+      <input wsam:Action="http://services.mcm.ipg.pt/AuthenticationService/loginRequest" message="tns:login" />
+      <output wsam:Action="http://services.mcm.ipg.pt/AuthenticationService/loginResponse" message="tns:loginResponse" />
+    </operation>
+  </portType>
+  <binding name="AuthenticationPortBinding" type="tns:AuthenticationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="login">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Authentication">
+    <port name="AuthenticationPort" binding="tns:AuthenticationPortBinding">
+      <soap:address location="http://rafaxps:8080/services/Authentication" />
+    </port>
+  </service>
+</definitions>
